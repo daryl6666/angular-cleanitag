@@ -1,0 +1,11 @@
+<div id="customer-search-component">
+  <h4><label for="customer-search-box">Kundensuche</label></h4>
+  <input #customerSearchBox id="customer-search-box" (input)="customerSearch(customerSearchBox.value)"
+    (keydown)="keyDown($event)" />
+  <ul class="customer-search-result">
+    <li *ngFor="let customer of filteredCustomerList$ | async; let i = index" [class.selected]="i == arrowkeyLocation"
+      (click)="onSelect(customer)">
+      <span class="badge">{{customer.lastName}} {{customer.firstName}}</span>
+    </li>
+  </ul>
+</div>

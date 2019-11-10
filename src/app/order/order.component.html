@@ -1,0 +1,57 @@
+<mat-card>
+  <div class="welcome funnyText">
+    <h1>Auftrag</h1>
+    <div class="button-row">
+    </div>
+  </div>
+
+
+
+  <app-customer-search (customerSearchSelectedCustomer)="onCustomerSelected($event)"></app-customer-search>
+  <div *ngIf="customer">
+    <h2>{{customer.lastName }} {{customer.firstName}} {{customer.street}} {{customer.streetNumber}}</h2>
+  </div>
+
+
+  <app-article-search (articleSearchSelectedArticle)="onArticleSelected($event)"></app-article-search>
+  <!--results list-->
+  <div *ngIf="articles">
+    <ul class="article-list">
+      <li *ngFor="let article of articles ">
+        <span class="badge">{{article.code}} </span>{{article.name}}
+        <button class="deleteArticle" title="Artikel löschen" (click)="delete(article)">x</button>
+      </li>
+    </ul>
+  </div>
+
+
+  <!--     <div>
+      <div class="filter-wrap">
+        <input [(ngModel)]="searchText1" placeholder="search customer" class="combobox-input">
+
+      </div>
+    </div>
+    <ul>
+
+      <li *ngFor="let customer of (customerList | async) | customerFilter : searchText1">
+        {{customer.fullText | lowercase}}
+
+      </li>
+ 
+    </ul>
+
+    <div class="filter-wrap">
+      <input [(ngModel)]="searchText1" placeholder="search article" class="combobox-input">
+
+    </div>
+  </div>
+  <div>
+    <ul>
+      <li *ngFor="let article of articleList | async | customerFilter : searchText1">
+        {{article.fullText | lowercase}}
+
+      </li>
+
+    </ul>
+  </div>
+-->

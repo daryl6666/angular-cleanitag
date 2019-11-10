@@ -1,0 +1,11 @@
+<div id="article-search-component">
+  <h4><label for="article-search-box">Artikelsuche</label></h4>
+  <input #articleSearchBox id="article-search-box" (input)="articleSearch(articleSearchBox.value)"
+    (keydown)="keyDown($event)" />
+  <ul class="article-search-result">
+    <li *ngFor="let article of filteredArticleList$ | async; let i = index" [class.selected]="i == arrowkeyLocation"
+      (click)="onSelect(article)">
+      <span class="badge">{{article.code}}</span> {{article.name}}
+    </li>
+  </ul>
+</div>
